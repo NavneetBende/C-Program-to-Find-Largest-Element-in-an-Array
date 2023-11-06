@@ -1,0 +1,27 @@
+// C Program to find largest element in an array
+#include<stdio.h>
+
+int getLargest(int arr[], int len)
+{
+    // assign first array element as largest
+    int max = arr[0];
+    
+    // linearly search for the largest element
+    for(int i=1; i max)
+            max = arr[i];
+    }
+    
+    return max;
+    
+}
+int main()
+{
+    int arr[] = {20, 5, 35, 40, 10, 50, 15};
+    
+    // get the length of the array
+    int len = sizeof(arr)/sizeof(arr[0]);    
+    
+    printf("The Largest element is: %d", getLargest(arr, len));
+}
+// Time complexity: O(N)
+// Space complexity: O(N)
