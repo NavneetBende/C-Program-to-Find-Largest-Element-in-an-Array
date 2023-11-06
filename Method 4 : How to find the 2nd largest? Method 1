@@ -1,0 +1,38 @@
+#include <stdio.h>
+#include <limits.h>
+
+
+int secLargest(int arr[], int n)
+{
+    // assigning first element as largest temporarily
+    int largest = arr[0];
+    
+    // we find the largest element here
+    for (int i=0; i < n; i++){ if(arr[i] > largest)
+            largest = arr[i];
+    }
+    
+    // temporarily assinging max value
+    int sec_largest = INT_MIN;
+    
+    // finding second largest here
+    for (int i=0; i < n; i++) 
+{ 
+if(arr[i] != largest && arr[i] > sec_largest)
+            sec_largest = arr[i];
+    }
+
+    return sec_largest;
+    
+}
+int main()
+{
+    int arr[] = {25, 40, 35, 20, 10, 80};
+    
+    // get the length of the array
+    int len = sizeof(arr)/sizeof(arr[0]);    
+    
+    printf("The 2nd largest : %d",secLargest(arr, len));
+}
+// Time complexity: O(N)
+// Space complexity: O(N)
