@@ -1,0 +1,37 @@
+// C Program to find largest element in an array
+// using bottom up recursive approach
+#include <stdio.h>
+
+int maximum(int arr[], int i, int end)
+{
+    int max;
+    
+    // when we reach 2nd last array element
+    // return the larger b/w last & 2nd last elements
+    if(i == end-1)
+        return (arr[i] > arr[i + 1]) ? arr[i] : arr[i + 1];
+
+    max = maximum(arr, i + 1, end);
+
+    return (arr[i] > max) ? arr[i] : max;
+}
+
+int main()
+{
+    int arr[] = {25, 100, 35, 20, 10, 80};
+    
+    // storing the index of end array element 
+    // end = 5 : arr[5] = 80 (the end element)
+    int end = sizeof(arr)/sizeof(arr[0]) - 1;    
+
+    int max;
+
+    max = maximum(arr, 0, end);
+
+    printf("Largest: %d\n", max);
+
+    return 0;
+}
+// Time complexity: O(N)
+// Space complexity: O(1)
+// Auxilary space complexity : O(N) due to function call stack
