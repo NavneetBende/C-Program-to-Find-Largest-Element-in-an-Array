@@ -1,0 +1,48 @@
+#include <stdio.h>
+#include <limits.h>
+
+
+void get2ndLargest(int arr[], int n)
+{
+    int i, first, second;
+ 
+    /* The array must have 2 or more items */
+    if (n < 2)
+    {
+        printf("Array has lesser than 2 items");
+        return;
+    }
+ 
+    first = second = INT_MIN;
+    for (i = 0; i < n ; i++) 
+    { 
+        /* If the current array element is larger than the first 
+        then update both first and second */ 
+        if (arr[i] > first)
+        {
+            second = first;
+            first = arr[i];
+        }
+ 
+        /* If arr[i] lies between first and second
+        then update second */
+        else if (arr[i] > second && arr[i] != first)
+            second = arr[i];
+    }
+    if (second == INT_MAX)
+        printf("We don't have 2nd largest item in array\n");
+    else
+        printf("The 2nd largest : %d",second);
+}
+ 
+int main()
+{
+    int arr[] = {30, 20, 60, 40, 10, 100};
+    int len = sizeof(arr)/sizeof(arr[0]);
+
+    get2ndLargest(arr, len);
+
+    return 0;
+}
+// Time Complexity : O(N)
+// Space Complexity : O(N)
